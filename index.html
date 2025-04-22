@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <button id="loveButton">Я люблю тебя</button>
+
+    <div class="main-heart hidden">
+        <div class="photos">
+            <img src="photo1.jpg" alt="">
+            <img src="photo2.jpg" alt="">
+            <img src="photo3.jpg" alt="">
+            <img src="photo4.jpg" alt="">
+            <img src="photo5.jpg" alt="">
+            <img src="photo6.jpg" alt="">
+            <img src="photo7.jpg" alt="">
+            <img src="photo8.jpg" alt="">
+            <img src="photo9.jpg" alt="">
+            <img src="photo10.jpg" alt="">
+            <img src="photo11.jpg" alt="">
+            <img src="photo12.jpg" alt="">
+            <img src="photo13.jpg" alt="">
+            <img src="photo14.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="hearts"></div>
+
+<script>
+    const button = document.getElementById('loveButton');
+    const heart = document.querySelector('.main-heart');
+
+    button.addEventListener('click', () => {
+        button.style.display = 'none';
+        heart.classList.remove('hidden');
+    });
+
+    const heartsContainer = document.querySelector('.hearts');
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('falling-heart');
+        heart.innerText = '❤️';
+
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 150);
+</script>
+
+</body>
+</html>
